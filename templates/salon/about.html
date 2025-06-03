@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}О нас - Groom Room{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">О нас</h1>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <p>Добро пожаловать в Салон Groom Room! Мы предлагаем профессиональный уход за вашими любимыми питомцами. Наша команда состоит из опытных и заботливых грумеров, которые используют только лучшие средства и оборудование для обеспечения комфорта и безопасности ваших животных.</p>
+            <p>Мы верим, что каждый питомец заслуживает самого лучшего ухода. Наша цель - сделать процесс груминга приятным как для животных, так и для их владельцев. Мы предлагаем широкий спектр услуг, от стрижки и купания до комплексного ухода и SPA-процедур.</p>
+            <p>Приходите к нам, и мы позаботимся о красоте и здоровье ваших четвероногих друзей!</p>
+        </div>
+    </div>
+
+    {# Section: Our Team #}
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="text-center mb-4">Наша команда</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4 text-center">
+                    <img src="{% static 'images/владислав.jpg' %}" class="img-fluid rounded-circle mb-3 shadow-sm" alt="Фото грумера 1" style="width: 150px; height: 150px; object-fit: cover;">
+                    <h4>Владислав</h4>
+                    <p class="text-muted">Главный грумер</p>
+                    <p>Специализируется на комплексном уходе и креативных стрижках.</p>
+                </div>
+                <div class="col-md-4 mb-4 text-center">
+                    <img src="{% static 'images/мария.jpg' %}" class="img-fluid rounded-circle mb-3 shadow-sm" alt="Фото грумера 2" style="width: 150px; height: 150px; object-fit: cover;">
+                    <h4>Мария</h4>
+                    <p class="text-muted">Специалист по кошкам</p>
+                    <p>Нежно и профессионально ухаживает даже за самыми своенравными пушистиками.</p>
+                </div>
+                <div class="col-md-4 mb-4 text-center">
+                    <img src="{% static 'images/максим.jpg' %}" class="img-fluid rounded-circle mb-3 shadow-sm" alt="Фото грумера 3" style="width: 150px; height: 150px; object-fit: cover;">
+                    <h4>Максим</h4>
+                    <p class="text-muted">Помощник грумера</p>
+                    <p>Всегда готов помочь и сделать пребывание питомца в салоне максимально комфортным.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Section: FAQ #}
+    <div class="row mt-5">
+        <div class="col-12">
+            <h2 class="text-center mb-2">Часто задаваемые вопросы</h2>
+            <div class="accordion" id="faqAccordion">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Какие услуги вы предоставляете?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Мы предлагаем полный спектр услуг по уходу за собаками и кошками, включая стрижку, купание, сушку, стрижку когтей, чистку ушей и многое другое. Доступные услуги вы можете посмотреть на странице <a href="{% url 'services' %}">Услуги</a>.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Как записаться на прием?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Вы можете записаться на прием через форму на нашем сайте на странице <a href="{% url 'book' %}">Записаться</a> или по телефону, указанному в контактах.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Сколько времени занимает процедура?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Длительность процедуры зависит от типа услуги, породы и размера животного, а также состояния шерсти. Примерную длительность вы можете увидеть в описании каждой услуги.
+                        </div>
+                    </div>
+                </div>
+                 <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Какие документы нужны для записи?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            Для записи на груминг не требуется специальных документов. Желательно иметь ветеринарный паспорт с отметками о прививках, но это не строго обязательное требование.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

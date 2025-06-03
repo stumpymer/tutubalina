@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Контакты - Groom Room{% endblock %}
+
+{% block content %}
+<div class="container mt-5"> {# Adjusted margin #}
+    <h1 class="text-center mb-4">Контакты</h1>
+    <div class="row">
+        <div class="col-md-6"> {# Левая колонка для контактной информации #}
+            <h2>Наш адрес</h2>
+            <p><i class="fas fa-map-marker-alt me-2"></i>ул. Горького, 123, г. Москва</p>
+
+            <h2>Телефон</h2>
+            <p><i class="fas fa-phone me-2"></i>+7 (999) 123-45-67</p>
+
+            <h2>Email</h2>
+            <p><i class="fas fa-envelope me-2"></i>groomroom@gmail.com</p> {# Updated email #}
+
+            <h2>Время работы</h2>
+            <p><i class="fas fa-clock me-2"></i>Ежедневно с 9:00 до 21:00</p>
+        </div>
+        <div class="col-md-6"> {# Правая колонка для фотографии #}
+            <img src="{% static 'images/о нас.jpg' %}" class="img-fluid rounded contact-photo" alt="Фото салона"> {# Added contact-photo class #}
+        </div>
+    </div>
+</div>
+{% endblock %} 
