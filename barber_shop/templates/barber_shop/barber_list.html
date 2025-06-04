@@ -1,0 +1,39 @@
+{% extends 'barber_shop/base.html' %}
+
+{% block title %}Наши барберы - Барбершоп{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="section-title mb-5">Наши барберы</h1>
+    
+    <div class="row g-4">
+        {% for barber in barbers %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    {% if barber.photo %}
+                        <img src="{{ barber.photo.url }}" class="card-img-top" alt="{{ barber.name }} {{ barber.surname }}">
+                    {% else %}
+                        <img src="https://via.placeholder.com/400x250?text=Барбер" class="card-img-top" alt="{{ barber.name }} {{ barber.surname }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">Мастер: {{ barber.name }} {{ barber.surname }}</h5>
+                        <p class="card-text">
+                            <small class="text-muted">Опыт работы: {{ barber.experience }} лет</small>
+                        </p>
+                        <p class="card-text">{{ barber.description|truncatewords:50 }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'barber_shop:create_booking' %}?barber={{ barber.id }}" class="btn btn-primary">Записаться</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">
+                    Барберы пока не добавлены. Пожалуйста, зайдите позже.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %} 

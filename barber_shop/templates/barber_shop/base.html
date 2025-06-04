@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Барбершоп{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #800020; /* Бордовый */
+            --secondary-color: #000000; /* Черный */
+            --accent-color: #ffffff; /* Белый */
+            --gray-color: #f8f9fa;
+            --text-color: #333333;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background-color: var(--secondary-color) !important;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color) !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .nav-link {
+            color: var(--accent-color) !important;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            padding: 0.5rem 1rem !important;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.8rem 2rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #6c757d; /* Medium gray background on hover */
+            border-color: #6c757d; /* Medium gray border on hover */
+            color: var(--accent-color); /* White text on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+
+        /* Style for barber names in cards */
+        .card .card-title {
+            font-size: 1.5rem; /* Larger font size */
+            font-weight: 700; /* Bolder */
+            color: var(--secondary-color); /* Keep black or change if needed for contrast */
+        }
+        
+        .footer {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer h5 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .hero-section {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            padding: 6rem 0;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .section-title {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .alert {
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.5rem;
+            }
+            
+            .hero-section {
+                padding: 4rem 0;
+            }
+            
+            .card-img-top {
+                height: 200px;
+            }
+        }
+
+        /* Style all buttons */
+        .btn {
+            color: var(--accent-color) !important; /* Ensure white text on buttons */
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+             /* Keep current hover styles, but ensure text is white */
+             color: var(--accent-color) !important;
+        }
+
+        .btn:active, .btn.active {
+            background-color: #6c757d !important; /* Gray when pressed */
+            border-color: #6c757d !important;
+            color: var(--accent-color) !important;
+            transform: translateY(1px);
+        }
+
+        /* Ensure regular links use primary color */
+        a {
+            color: var(--primary-color) !important; /* Force burgundy color for all links */
+            text-decoration: none;
+        }
+
+        a:hover, a:focus, a:active {
+            color: var(--primary-color) !important; /* Keep burgundy on hover/focus/active */
+            text-decoration: underline;
+        }
+
+        /* Override Bootstrap's default link colors in navbar */
+        .navbar-dark .navbar-nav .nav-link {
+            color: var(--accent-color) !important;
+        }
+
+        .navbar-dark .navbar-nav .nav-link:hover,
+        .navbar-dark .navbar-nav .nav-link:focus,
+        .navbar-dark .navbar-nav .nav-link:active {
+            color: var(--primary-color) !important;
+        }
+
+        /* Override Bootstrap's default link colors in footer */
+        .footer a {
+            color: var(--accent-color) !important;
+        }
+
+        .footer a:hover,
+        .footer a:focus,
+        .footer a:active {
+            color: var(--primary-color) !important;
+            text-decoration: underline;
+        }
+
+        /* Style secondary buttons if they might appear blue */
+        .btn-secondary {
+            background-color: #6c757d; /* Default Bootstrap secondary */
+            border-color: #6c757d;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+
+        /* Style alert links with primary color */
+        .alert-link {
+            color: var(--primary-color);
+        }
+
+        .cta-image {
+            max-width: 300px; /* Adjust size as needed */
+            height: auto;
+        }
+
+        @media (max-width: 767.98px) {
+            .cta-image {
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 1.5rem; /* Add space below image on small screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'barber_shop:home' %}">Барбершоп</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'barber_shop:barber_list' %}">Барберы</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'barber_shop:service_list' %}">Услуги</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'barber_shop:create_booking' %}">Записаться</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        {% if user.is_staff %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'admin:index' %}">Админ-панель</a>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'barber_shop:personal_account' %}">Личный кабинет</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'barber_shop:booking_list' %}">Мои записи</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'barber_shop:logout' %}">Выйти</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'barber_shop:login' %}">Войти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'barber_shop:register' %}">Регистрация</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5>Контакты</h5>
+                    <p>Телефон: +7 (123) 456-78-90</p>
+                    <p>Email: info@barbershop.ru</p>
+                    <p>Instagram: @barbershop</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Адрес</h5>
+                    <p>г. Владимир, ул. Нижняя Дуброва, д. 7</p>
+                    <p>Вход со двора</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Часы работы</h5>
+                    <p>Пн-Пт: 10:00 - 22:00</p>
+                    <p>Сб-Вс: 11:00 - 20:00</p>
+                    <p>Без выходных</p>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="mb-0">&copy; {% now "Y" %} Барбершоп. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
