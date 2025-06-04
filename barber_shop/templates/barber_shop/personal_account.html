@@ -41,7 +41,7 @@
                                 <tr>
                                     <td>{{ booking.date|date:"d.m.Y" }}</td>
                                     <td>{{ booking.time|time:"H:i" }}</td>
-                                    <td>{{ booking.barber.get_full_name }}</td>
+                                    <td>{{ booking.barber.name }} {{ booking.barber.surname }}</td>
                                     <td>{{ booking.service.name }}</td>
                                     <td>
                                         <span class="badge {% if booking.status == 'pending' %}bg-warning{% elif booking.status == 'confirmed' %}bg-success{% elif booking.status == 'completed' %}bg-secondary{% elif booking.status == 'cancelled' %}bg-danger{% endif %}">
